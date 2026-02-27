@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 
 const SearchBar = ({onResults}) => {
     const [query, setQuery] = useState('');
@@ -12,7 +13,7 @@ const SearchBar = ({onResults}) => {
         e.preventDefault();
     
         try{
-            const response = await fetch('http://localhost:5000/api/ask', {
+            const response = await fetch(`${API_BASE}/api/ask`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query })

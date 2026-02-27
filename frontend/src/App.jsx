@@ -3,15 +3,19 @@ import ProductCard from './Components/ProductCard';
 import SearchBar from './Components/SearchBar'
 import { useEffect, useRef, useState } from 'react'
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
+
 function App() {
   
+
+
 const [allproducts, setAllProducts] = useState([]);
 const [searchResults, setSearchResults] = useState([]);
 const [selectedProduct, setSelectedProduct] = useState(null);
   const modalRef = useRef(null);
 
 useEffect(()=>{
-  fetch('http://localhost:5000/api/products').then(res => res.json()).then(setAllProducts);
+  fetch(`${API_BASE}/api/products`).then(res => res.json()).then(setAllProducts);
 },[]);
 
 const productsToShow = searchResults.length > 0 ? searchResults : allproducts;
