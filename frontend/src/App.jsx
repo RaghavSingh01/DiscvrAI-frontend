@@ -3,7 +3,7 @@ import ProductCard from './Components/ProductCard';
 import SearchBar from './Components/SearchBar'
 import { useEffect, useRef, useState } from 'react'
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
+// const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 
 function App() {
   
@@ -15,7 +15,7 @@ const [selectedProduct, setSelectedProduct] = useState(null);
   const modalRef = useRef(null);
 
 useEffect(()=>{
-  fetch(`${API_BASE}/api/products`).then(res => res.json()).then(setAllProducts);
+  fetch(`https://discvrai-backend.onrender.com/api/products`).then(res => res.json()).then(setAllProducts);
 },[]);
 
 const productsToShow = searchResults.length > 0 ? searchResults : allproducts;
